@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0a0d12">
+    <title>AUTH / 14</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="noise"></div>
+    <header class="topbar">
+        <a class="brand" href="/" aria-label="AUTH 14 home">
+            <span>AUTH</span><b>/14</b>
+        </a>
+        <p>Authentication pattern laboratory</p>
+        <div class="session" id="session">LOCAL SESSION</div>
+    </header>
+    <div class="layout">
+        <aside class="catalog">
+            <div class="catalog-heading">
+                <span>Methods</span>
+                <strong id="method-count">00</strong>
+            </div>
+            <label class="search">
+                <span>Filter</span>
+                <input id="filter" type="search" autocomplete="off" placeholder="Search patterns">
+            </label>
+            <nav id="method-list" aria-label="Authentication methods"></nav>
+        </aside>
+        <main id="stage" tabindex="-1">
+            <section class="loading">
+                <span class="spinner"></span>
+                <p>Loading authentication methods</p>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <span>LOCAL AUTHENTICATION LAB</span>
+        <span>NO CREDENTIALS LEAVE THIS PROCESS</span>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+</body>
+</html>
+
