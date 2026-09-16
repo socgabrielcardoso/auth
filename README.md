@@ -1,35 +1,58 @@
 # Auth
 
-Laboratório técnico de autenticação moderna criado para explorar, comparar e demonstrar diferentes estratégias de identidade e acesso em uma única aplicação.
+> **Identity & Access Security Lab** — laboratório pessoal para estudo de IAM, MFA, passwordless e fluxos modernos de autenticação.
 
-O projeto reúne múltiplos fluxos de autenticação com foco em segurança, experiência do usuário e arquitetura extensível, servindo como ambiente prático para estudo de IAM, MFA e mecanismos passwordless.
+O **Auth** reúne diferentes mecanismos de autenticação em uma única base para comparar segurança, experiência do usuário e arquitetura. O objetivo é estudar identidade e acesso de forma prática, observando quando cada fator, fluxo ou mecanismo faz sentido.
 
-## Métodos demonstrados
+## Métodos explorados
 
-A implementação organiza diferentes mecanismos de autenticação em módulos independentes, incluindo password, passphrase, PIN, TOTP, OTP por e-mail e SMS, magic link, push authentication, QR login, recovery codes, social OAuth, security keys, passkeys e MFA adaptativo.
+- Password e passphrase
+- PIN
+- TOTP
+- OTP por e-mail e SMS
+- Magic link
+- Push authentication
+- QR login
+- Recovery codes
+- Social OAuth
+- Security keys
+- Passkeys
+- MFA adaptativo
 
-Essa abordagem permite observar diferenças de segurança, usabilidade e contexto entre métodos tradicionais, multifator e passwordless.
+## Objetivo de estudo
 
-## Stack e execução
+O projeto funciona como um laboratório de **IAM e segurança de identidade**. A proposta é observar diferenças entre autenticação tradicional, multifator e passwordless, além de praticar conceitos relacionados a fatores de autenticação, recuperação de acesso e redução de dependência de senhas.
+
+Não é uma solução pronta para autenticação de produção. O repositório existe para aprendizado, experimentação controlada e evolução técnica.
+
+## Stack
 
 - **TypeScript** com arquitetura modular
 - **Node.js 24+**
 - Build com `tsc`
 - Ambiente de desenvolvimento com `tsx`
 - Testes automatizados via Node Test Runner
-- Suporte a execução containerizada por Docker
+- Suporte a execução containerizada com Docker
+
+## Execução
 
 ```bash
 npm install
 npm run dev
 ```
 
-Para validar o projeto:
+## Validação
 
 ```bash
 npm test
 ```
 
-## Objetivo técnico
+## Segurança
 
-Mais do que uma tela de login, este repositório funciona como um laboratório de engenharia de identidade: concentra diferentes fatores e fluxos em uma base comum para facilitar experimentação, comparação de abordagens e evolução de controles de autenticação.
+Em ambientes reais, mecanismos de autenticação exigem controles adicionais de proteção de credenciais, gestão de segredos, rate limiting, auditoria, recuperação segura, políticas de sessão e integração apropriada com provedores de identidade.
+
+---
+
+**Categoria:** Cybersecurity • IAM • MFA • Passwordless • Identity Security
+
+**Status:** laboratório pessoal de estudo e experimentação técnica.
