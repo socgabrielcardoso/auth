@@ -17,5 +17,17 @@
     "@types/node": "26.4.1",
     "tsx": "4.23.13",
     "typescript": "7.0.2"
-  }
+  },
+  "description": "Identity and access security lab for MFA, passwordless authentication, passkeys and modern IAM patterns.",
+  "author": "Gabriel de Lima Cardoso",
+  "keywords": [
+    "cybersecurity",
+    "iam",
+    "identity-security",
+    "mfa",
+    "passwordless",
+    "passkeys",
+    "typescript",
+    "nodejs"
+  ]
 }
