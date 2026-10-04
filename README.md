@@ -1,58 +1,60 @@
 # Auth
 
-> **Identity & Access Security Lab** — laboratório pessoal para estudo de IAM, MFA, passwordless e fluxos modernos de autenticação.
+Projeto de estudo sobre **IAM, MFA e autenticação passwordless** feito em TypeScript.
 
-O **Auth** reúne diferentes mecanismos de autenticação em uma única base para comparar segurança, experiência do usuário e arquitetura. O objetivo é estudar identidade e acesso de forma prática, observando quando cada fator, fluxo ou mecanismo faz sentido.
+Em vez de tratar login como uma única tela, este repositório compara diferentes formas de autenticação e os riscos de cada uma: senha, TOTP, OTP, passkeys, security keys, magic links, recovery codes e outros fluxos.
 
-## Métodos explorados
+## Métodos estudados
 
-- Password e passphrase
+- password e passphrase
 - PIN
 - TOTP
 - OTP por e-mail e SMS
-- Magic link
-- Push authentication
+- magic link
+- push authentication
 - QR login
-- Recovery codes
-- Social OAuth
-- Security keys
-- Passkeys
+- recovery codes
+- OAuth
+- security keys
+- passkeys
 - MFA adaptativo
-
-## Objetivo de estudo
-
-O projeto funciona como um laboratório de **IAM e segurança de identidade**. A proposta é observar diferenças entre autenticação tradicional, multifator e passwordless, além de praticar conceitos relacionados a fatores de autenticação, recuperação de acesso e redução de dependência de senhas.
-
-Não é uma solução pronta para autenticação de produção. O repositório existe para aprendizado, experimentação controlada e evolução técnica.
 
 ## Stack
 
-- **TypeScript** com arquitetura modular
-- **Node.js 24+**
-- Build com `tsc`
-- Ambiente de desenvolvimento com `tsx`
-- Testes automatizados via Node Test Runner
-- Suporte a execução containerizada com Docker
+- TypeScript
+- Node.js 24+
+- `tsx` para desenvolvimento
+- Node Test Runner
+- Docker
 
-## Execução
+## Rodando localmente
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Validação
+Build:
+
+```bash
+npm run build
+npm start
+```
+
+Testes:
 
 ```bash
 npm test
 ```
 
-## Segurança
+## Estrutura
 
-Em ambientes reais, mecanismos de autenticação exigem controles adicionais de proteção de credenciais, gestão de segredos, rate limiting, auditoria, recuperação segura, políticas de sessão e integração apropriada com provedores de identidade.
+- `src/` — aplicação e fluxos de autenticação
+- `public/` — interface
+- `test/` — testes automatizados
+- `docs/` — documentação de IAM e segurança
+- `SECURITY.md` — política de segurança do repositório
 
----
+## Observação
 
-**Categoria:** Cybersecurity • IAM • MFA • Passwordless • Identity Security
-
-**Status:** laboratório pessoal de estudo e experimentação técnica.
+Este projeto é de estudo. Autenticação de produção exige controles adicionais de armazenamento de credenciais, gestão de sessão, recuperação de conta, proteção contra abuso, auditoria e integração segura com provedores de identidade.
