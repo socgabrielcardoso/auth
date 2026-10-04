@@ -1,17 +1,26 @@
-# Project Profile
+# Auth — notas do projeto
 
-**Auth** is an Identity & Access Security Lab focused on comparing modern authentication methods, MFA and passwordless patterns in a controlled environment.
+## Finalidade
 
-## What this project demonstrates
-- IAM and identity-security fundamentals
-- MFA, TOTP, OTP, passkeys and security-key concepts
-- Modular TypeScript and Node.js architecture
-- Automated testing and container-ready execution
-- Security trade-off analysis between authentication flows
+Comparar diferentes mecanismos de autenticação dentro da mesma aplicação e entender onde cada um melhora ou piora a segurança.
 
-## Portfolio signal
-The project shows practical understanding of authentication architecture beyond passwords, including recovery, factor diversity, session considerations and secure-by-design identity patterns.
+## Assuntos cobertos
 
-**Domain:** IAM, Identity Security, MFA, Passwordless  
-**Stack:** TypeScript, Node.js, Docker  
-**Status:** Active technical laboratory
+- senha e passphrase;
+- TOTP;
+- OTP;
+- magic link;
+- push;
+- recovery codes;
+- OAuth;
+- security keys;
+- passkeys;
+- MFA adaptativo.
+
+## Stack
+
+TypeScript, Node.js e Docker.
+
+## Foco técnico
+
+O interesse principal está no ciclo completo de identidade: autenticação, segundo fator, sessão, recuperação e fallback. Um método forte perde valor quando o fluxo de recuperação é fraco, por isso os mecanismos são analisados como parte do mesmo sistema.
