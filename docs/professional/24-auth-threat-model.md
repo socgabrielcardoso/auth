@@ -1,14 +1,15 @@
-# Authentication Threat Model
+# Ameaças consideradas
 
-Threats include:
+Os fluxos de autenticação deste projeto são revisados pensando principalmente em:
+
 - credential stuffing;
 - password spraying;
 - phishing;
 - MFA fatigue;
-- session theft;
-- recovery abuse;
-- token leakage;
-- account enumeration;
-- malicious OAuth consent.
+- roubo de sessão;
+- abuso de recuperação;
+- vazamento de token;
+- enumeração de conta;
+- consentimento OAuth malicioso.
 
-Each flow should document which threats it mitigates and which remain.
+Nem todo método reduz os mesmos riscos. Sempre que um fluxo novo é adicionado, vale registrar quais ameaças ele reduz e qual caminho de fallback continua disponível.
