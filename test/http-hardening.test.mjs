@@ -21,3 +21,7 @@ test("Ignore empty cookie names after trimming", async () => {
     assert.equal(Object.keys(cookies(request(" =bad; safe=ok"))).length,1);
 });
 
+test("Do not materialize prototype-sensitive cookie names", async () => {
+    const parsed=cookies(request("__proto__=bad; constructor=bad; safe=ok"));assert.equal(parsed.safe,"ok");assert.equal(Object.hasOwn(parsed,"__proto__"),false);
+});
+
