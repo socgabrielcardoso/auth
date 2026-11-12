@@ -55,7 +55,8 @@ export async function readJson(request: IncomingMessage): Promise<AuthInput> {
 
 export function cookies(request: IncomingMessage): Record<string, string> {
     const header = request.headers.cookie ?? "";
-    return Object.fromEntries(header.split(";").flatMap(part => {
+    const found: Record<string, string> = Object.create(null) as Record<string, string>;
+    for (const [name, value] of header.split(";").flatMap(part => {
         const separator = part.indexOf("=");
         if (separator < 1) {
             return [];
