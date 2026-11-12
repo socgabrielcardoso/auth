@@ -13,3 +13,7 @@ test("Skip malformed encoded cookies without crashing", async () => {
     assert.equal(cookies(request("bad=%ZZ; valid=ok")).valid,"ok");
 });
 
+test("Keep the first occurrence when session cookies collide", async () => {
+    assert.equal(cookies(request("session=first; session=second")).session,"first");
+});
+
