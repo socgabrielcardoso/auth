@@ -66,7 +66,11 @@ export function cookies(request: IncomingMessage): Record<string, string> {
         } catch {
             return [];
         }
-    }));
+    })) {
+        if (!name || ["__proto__", "constructor", "prototype"].includes(name) || Object.hasOwn(found, name)) continue;
+        found[name] = value;
+    }
+    return found;
 }
 
 export function cookie(name: string, value: string, maxAge: number, secure: boolean): string {
