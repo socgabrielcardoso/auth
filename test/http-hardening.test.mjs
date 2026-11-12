@@ -17,3 +17,7 @@ test("Keep the first occurrence when session cookies collide", async () => {
     assert.equal(cookies(request("session=first; session=second")).session,"first");
 });
 
+test("Ignore empty cookie names after trimming", async () => {
+    assert.equal(Object.keys(cookies(request(" =bad; safe=ok"))).length,1);
+});
+
