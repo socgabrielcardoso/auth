@@ -33,3 +33,7 @@ test("Reject invalid signed-cookie lifetime values", async () => {
     assert.throws(()=>cookie("session","abc",NaN,true),RangeError);
 });
 
+test("Reject invalid and oversized numeric OTP lengths", async () => {
+    const ctx=testContext();assert.throws(()=>ctx.randomDigits(0),RangeError);assert.throws(()=>ctx.randomDigits(65),RangeError);
+});
+
