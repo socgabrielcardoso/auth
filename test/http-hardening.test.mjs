@@ -37,3 +37,7 @@ test("Reject invalid and oversized numeric OTP lengths", async () => {
     const ctx=testContext();assert.throws(()=>ctx.randomDigits(0),RangeError);assert.throws(()=>ctx.randomDigits(65),RangeError);
 });
 
+test("Reject invalid random-token byte sizes", async () => {
+    const ctx=testContext();assert.throws(()=>ctx.randomToken(0),RangeError);assert.throws(()=>ctx.randomToken(1025),RangeError);
+});
+
