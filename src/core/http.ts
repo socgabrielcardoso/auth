@@ -74,6 +74,7 @@ export function cookies(request: IncomingMessage): Record<string, string> {
 }
 
 export function cookie(name: string, value: string, maxAge: number, secure: boolean): string {
+    if (!Number.isSafeInteger(maxAge) || maxAge < 0) throw new RangeError("Invalid cookie lifetime");
     const flags = [
         `${name}=${encodeURIComponent(value)}`,
         "Path=/",
