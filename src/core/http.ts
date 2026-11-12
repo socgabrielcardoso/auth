@@ -60,7 +60,11 @@ export function cookies(request: IncomingMessage): Record<string, string> {
         if (separator < 1) {
             return [];
         }
-        return [[part.slice(0, separator).trim(), decodeURIComponent(part.slice(separator + 1).trim())]];
+        try {
+            return [[part.slice(0, separator).trim(), decodeURIComponent(part.slice(separator + 1).trim())]];
+        } catch {
+            return [];
+        }
     }));
 }
 
