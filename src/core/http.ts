@@ -55,16 +55,26 @@ export async function readJson(request: IncomingMessage): Promise<AuthInput> {
 
 export function cookies(request: IncomingMessage): Record<string, string> {
     const header = request.headers.cookie ?? "";
-    return Object.fromEntries(header.split(";").flatMap(part => {
+    const found: Record<string, string> = Object.create(null) as Record<string, string>;
+    for (const [name, value] of header.split(";").flatMap((part): Array<[string, string]> => {
         const separator = part.indexOf("=");
         if (separator < 1) {
             return [];
         }
-        return [[part.slice(0, separator).trim(), decodeURIComponent(part.slice(separator + 1).trim())]];
-    }));
+        try {
+            return [[part.slice(0, separator).trim(), decodeURIComponent(part.slice(separator + 1).trim())]];
+        } catch {
+            return [];
+        }
+    })) {
+        if (!name || ["__proto__", "constructor", "prototype"].includes(name) || Object.hasOwn(found, name)) continue;
+        found[name] = value;
+    }
+    return found;
 }
 
 export function cookie(name: string, value: string, maxAge: number, secure: boolean): string {
+    if (!Number.isSafeInteger(maxAge) || maxAge < 0) throw new RangeError("Invalid cookie lifetime");
     const flags = [
         `${name}=${encodeURIComponent(value)}`,
         "Path=/",
@@ -80,7 +90,10 @@ export function cookie(name: string, value: string, maxAge: number, secure: bool
 
 export async function serveStatic(response: ServerResponse, publicRoot: string, requestPath: string): Promise<boolean> {
     const requested = requestPath === "/" ? "/index.html" : requestPath;
-    const relative = normalize(decodeURIComponent(requested)).replace(/^[/\\]+/, "");
+    let decoded: string;
+    try { decoded = decodeURIComponent(requested); }
+    catch { return false; }
+    const relative = normalize(decoded).replace(/^[/\\]+/, "");
     const target = resolve(publicRoot, relative);
     const root = resolve(publicRoot) + sep;
     if (!target.startsWith(root)) {
