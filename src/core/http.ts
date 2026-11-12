@@ -89,7 +89,10 @@ export function cookie(name: string, value: string, maxAge: number, secure: bool
 
 export async function serveStatic(response: ServerResponse, publicRoot: string, requestPath: string): Promise<boolean> {
     const requested = requestPath === "/" ? "/index.html" : requestPath;
-    const relative = normalize(decodeURIComponent(requested)).replace(/^[/\\]+/, "");
+    let decoded: string;
+    try { decoded = decodeURIComponent(requested); }
+    catch { return false; }
+    const relative = normalize(decoded).replace(/^[/\\]+/, "");
     const target = resolve(publicRoot, relative);
     const root = resolve(publicRoot) + sep;
     if (!target.startsWith(root)) {
