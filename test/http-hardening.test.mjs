@@ -29,3 +29,7 @@ test("Reject malformed percent-encoded static paths", async () => {
     assert.equal(await serveStatic({}, ".", "/broken%ZZ"),false);
 });
 
+test("Reject invalid signed-cookie lifetime values", async () => {
+    assert.throws(()=>cookie("session","abc",NaN,true),RangeError);
+});
+
