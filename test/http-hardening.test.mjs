@@ -25,3 +25,7 @@ test("Do not materialize prototype-sensitive cookie names", async () => {
     const parsed=cookies(request("__proto__=bad; constructor=bad; safe=ok"));assert.equal(parsed.safe,"ok");assert.equal(Object.hasOwn(parsed,"__proto__"),false);
 });
 
+test("Reject malformed percent-encoded static paths", async () => {
+    assert.equal(await serveStatic({}, ".", "/broken%ZZ"),false);
+});
+
