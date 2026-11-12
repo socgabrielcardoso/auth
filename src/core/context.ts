@@ -22,6 +22,7 @@ export function createMethodContext(options: ContextOptions = {}): MethodContext
         demoMode,
         now: clock,
         randomDigits(length) {
+            if (!Number.isInteger(length) || length < 1 || length > 64) throw new RangeError("Invalid digit length");
             let value = "";
             for (let index = 0; index < length; index++) {
                 value += randomInt(0, 10).toString();
