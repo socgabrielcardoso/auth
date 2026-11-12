@@ -30,6 +30,7 @@ export function createMethodContext(options: ContextOptions = {}): MethodContext
             return value;
         },
         randomToken(bytes = 24) {
+            if (!Number.isInteger(bytes) || bytes < 1 || bytes > 1024) throw new RangeError("Invalid token length");
             return randomBytes(bytes).toString("base64url");
         },
         digest(value) {
